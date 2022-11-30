@@ -8,8 +8,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
-// normalde kalıtım kullandığımızda Constructor yazmadığım zaman direkt eror veriyor
-// Bunda niye vermedi ?
+
 public class GamePanel extends JPanel implements Runnable{
 	// screen settings
 	final int originalTileSize = 16; //16x16 tile
@@ -39,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 
 	public void startGameThreat() {
-		gameThread = new Thread(this); // tam olarak ne işe yarıyor?
+		gameThread = new Thread(this); 
 		gameThread.start();
 	}	
 	@Override
