@@ -80,7 +80,7 @@ public class GamePanel extends JPanel implements Runnable{
 	player.upDate();
 	}
 	public void paintComponent(Graphics g) {// Graphics is a class that has many functions to draw object on screen.
-		super.paintComponent(g);    //!SOR!
+		super.paintComponent(g);    
 		Graphics2D g2 = (Graphics2D)g;// we want to use some caracterictics in Graphics2D
 		
 	
