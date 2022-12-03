@@ -24,6 +24,8 @@ public class Player extends Entity {
 		  this.gp=gp;
 		  this.keyH=keyH;
 		  
+		  screenX=gp.screenWidth/2-gp.tileSize/2;
+		  screenY=gp.screenHeight/2-gp.tileSize/2;
 		  setDefoultValues();
 		  getPlayerImage();
 
@@ -53,30 +55,37 @@ public class Player extends Entity {
 	if(keyH.upPressed==true||keyH.downPressed==true||keyH.leftPressed==true||keyH.rightPressed==true) {//bu if cümlesi bir tuşa basmadığımız zaman ana karakterin durmasını sağlıyor
 		// bir tuşa basmayınca elbette hareket etmeyecek fakat olduğu yerde aynı directionun resimleri arasında sürekli geçiş yapacağı için kötü bir görüntü oluşturacak
 		if(keyH.upPressed==true) {
-			
-			
-			worldY -= speed;
 			direction="up";
 		}
 		else if(keyH.downPressed==true) {
-
-			worldY += speed;
 			direction="down";
 		}
 		else if(keyH.leftPressed==true) {
-			
-				worldX-=speed;
 				direction = "left";
 		}
 		else if(keyH.rightPressed==true) {
-			
-				
-				worldX+=speed;
 				direction = "right";
 		}
+		//check tile collision
 		collisionOn = false;
 		gp.cChaecker.checkTile(this);
-
+// if collision is false player can move
+        if(collisionOn==false){
+			switch(direction){
+				case"up":
+				worldY -= speed;
+				break;
+				case "down":
+				worldY += speed;
+				break;
+				case "left":
+				worldX-=speed;
+				break;
+				case "right":
+				worldX+=speed;
+				break;
+			}
+		}
 		spriteCounter++;
 		
 		if(spriteCounter>10) {
@@ -128,6 +137,6 @@ public class Player extends Entity {
 			}
 			 break;
 			 	}
-		g2.drawImage(image,X,Y,gp.tileSize,gp.tileSize,null);//spnuncusu image observer ne işe yarıyor sor
+		g2.drawImage(image,screenX,screenY,gp.tileSize,gp.tileSize,null);//spnuncusu image observer ne işe yarıyor sor
 	}
 }
