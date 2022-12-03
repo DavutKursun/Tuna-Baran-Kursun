@@ -17,6 +17,8 @@ public class Player extends Entity {
 	  GamePanel gp;
 	  KeyHandler keyH;
 	  
+	  public final int screenX;
+	  public final int screenY;
 	  //constructor
 	  public Player(GamePanel gp,KeyHandler keyH) {
 		  this.gp=gp;
@@ -28,8 +30,8 @@ public class Player extends Entity {
 		  solidArea = new Rectangle(8,16,32,32);
 	  }
 	public void setDefoultValues() {
-		x=100;
-		y=100;
+		worldX=gp.tileSize*15;
+		worldY=gp.tileSize*15;
 		speed = 4;
 		direction = "up";
 	}
@@ -53,23 +55,23 @@ public class Player extends Entity {
 		if(keyH.upPressed==true) {
 			
 			
-			y -= speed;
+			worldY -= speed;
 			direction="up";
 		}
 		else if(keyH.downPressed==true) {
 
-			y += speed;
+			worldY += speed;
 			direction="down";
 		}
 		else if(keyH.leftPressed==true) {
 			
-				x-=speed;
+				worldX-=speed;
 				direction = "left";
 		}
 		else if(keyH.rightPressed==true) {
 			
 				
-				x+=speed;
+				worldX+=speed;
 				direction = "right";
 		}
 		collisionOn = false;
@@ -126,6 +128,6 @@ public class Player extends Entity {
 			}
 			 break;
 			 	}
-		g2.drawImage(image,x,y,gp.tileSize,gp.tileSize,null);//spnuncusu image observer ne işe yarıyor sor
+		g2.drawImage(image,X,Y,gp.tileSize,gp.tileSize,null);//spnuncusu image observer ne işe yarıyor sor
 	}
 }
