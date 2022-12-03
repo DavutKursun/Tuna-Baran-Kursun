@@ -1,7 +1,7 @@
 package main;
 
 import javax.swing.JFrame;
-
+// aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 public class Main {
 //  4 
 	public static void main(String[] args) {
@@ -10,11 +10,12 @@ public class Main {
 		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// This lets the window properly close when user clicks the close ("x") buton		
 		
-		window.setTitle("2 D Adventure");
+		window.setTitle("Bob's Adventures");
 		
 		GamePanel gamePanel = new GamePanel();// gamePanel is a JPanel with extra functions
-		
+		window.setResizable(false);
 		window.add(gamePanel);
+		
 		window.pack(); 
 	    
 	    

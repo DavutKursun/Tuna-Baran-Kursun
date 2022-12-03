@@ -8,24 +8,24 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
-// normalde kalıtım kullandığımızda Constructor yazmadığım zaman direkt eror veriyor
-// Bunda niye vermedi ?
+
+
 public class GamePanel extends JPanel implements Runnable{
 	// screen settings
 	final int originalTileSize = 16; //16x16 tile
 	final int scale =3;   
 	
 	public final int tileSize = originalTileSize * scale; //16x3=48 pixel
-	final int maxScreenCol = 16;
-	final int maxScreenRow = 12;
-	final int screenWidth = tileSize * maxScreenCol; //768 pixel
-	final int screenHeight = tileSize * maxScreenRow;//576 pixels
+	final int maxScreenCol = 32;
+	final int maxScreenRow = 17;
+	final int screenWidth = tileSize * maxScreenCol; //768 pixel // uptaded for my pc resolution
+	final int screenHeight = tileSize * maxScreenRow;//576 pixels //  uptaded for my pc resolution
 	
 	TileManager tileM = new TileManager(this);
 	KeyHandler keyH= new KeyHandler();
 	Thread gameThread;
 	Player player = new Player(this,keyH);
-	
+	public CollisionChecker cChaecker = new CollisionChecker(this);
 	int FPS = 60;//fps
 
 	//constructor
@@ -38,14 +38,14 @@ public class GamePanel extends JPanel implements Runnable{
         this.setFocusable(true);// with this, this GamePanel can be Focused to receive key input.
 	}
 
-	public void startGameThreat() {
-		gameThread = new Thread(this); // tam olarak ne işe yarıyor?
+	public void startGameThreat() {//a java library feature that allows us to simultaneously press keys and update the image at the same time
+		gameThread = new Thread(this);// 
 		gameThread.start();
 	}	
 	@Override
 	public void run() {
 		// delta method for visible movements(eğer bu metodu yazmasaydım hareket etme tuşuna basar basmaz karakter milyonlarca piksel ilerlediği için ekrandan çıkıp kaybolurdu)
-		// delta yerine sleep metodu da var fakan fazla karışık
+		
 		double drawInterval = 1000000000/FPS;// draws a screen 0.01666 persecond
 		double delta = 0;
 		long startingTime = System.nanoTime();

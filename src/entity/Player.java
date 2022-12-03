@@ -10,6 +10,8 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.KeyHandler;
 
+import java.awt.Rectangle;
+
 public class Player extends Entity {
           
 	  GamePanel gp;
@@ -22,11 +24,13 @@ public class Player extends Entity {
 		  
 		  setDefoultValues();
 		  getPlayerImage();
+
+		  solidArea = new Rectangle(8,16,32,32);
 	  }
 	public void setDefoultValues() {
 		x=100;
 		y=100;
-		speed = 3;
+		speed = 4;
 		direction = "up";
 	}
 	public void getPlayerImage() {
@@ -47,22 +51,30 @@ public class Player extends Entity {
 	if(keyH.upPressed==true||keyH.downPressed==true||keyH.leftPressed==true||keyH.rightPressed==true) {//bu if cümlesi bir tuşa basmadığımız zaman ana karakterin durmasını sağlıyor
 		// bir tuşa basmayınca elbette hareket etmeyecek fakat olduğu yerde aynı directionun resimleri arasında sürekli geçiş yapacağı için kötü bir görüntü oluşturacak
 		if(keyH.upPressed==true) {
+			
+			
 			y -= speed;
 			direction="up";
 		}
 		else if(keyH.downPressed==true) {
+
 			y += speed;
 			direction="down";
 		}
 		else if(keyH.leftPressed==true) {
-			x-=speed;
-			direction = "left";
+			
+				x-=speed;
+				direction = "left";
 		}
 		else if(keyH.rightPressed==true) {
-			x+=speed;
-			direction = "right";
+			
+				
+				x+=speed;
+				direction = "right";
 		}
-		
+		collisionOn = false;
+		gp.cChaecker.checkTile(this);
+
 		spriteCounter++;
 		
 		if(spriteCounter>10) {
@@ -114,6 +126,6 @@ public class Player extends Entity {
 			}
 			 break;
 			 	}
-		g2.drawImage(image,x,y,gp.tileSize*5,gp.tileSize*5,null);//spnuncusu image observer ne işe yarıyor sor
+		g2.drawImage(image,x,y,gp.tileSize,gp.tileSize,null);//spnuncusu image observer ne işe yarıyor sor
 	}
 }
