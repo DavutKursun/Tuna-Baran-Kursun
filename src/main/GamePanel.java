@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 
+
 public class GamePanel extends JPanel implements Runnable{
 	// screen settings
 	final int originalTileSize = 16; //16x16 tile
@@ -38,10 +39,11 @@ public class GamePanel extends JPanel implements Runnable{
         this.setFocusable(true);// with this, this GamePanel can be Focused to receive key input.
 	}
 
+
 	public void startGameThreat() {//a java library feature that allows us to simultaneously press keys and update the image at the same time
 		gameThread = new Thread(this);// 
 		gameThread.start();
-	}	
+	}
 	@Override
 	public void run() {
 		// delta method for visible movements(eğer bu metodu yazmasaydım hareket etme tuşuna basar basmaz karakter milyonlarca piksel ilerlediği için ekrandan çıkıp kaybolurdu)
@@ -81,7 +83,7 @@ public class GamePanel extends JPanel implements Runnable{
 	player.upDate();
 	}
 	public void paintComponent(Graphics g) {// Graphics is a class that has many functions to draw object on screen.
-		super.paintComponent(g);    //!SOR!
+		super.paintComponent(g);    
 		Graphics2D g2 = (Graphics2D)g;// we want to use some caracterictics in Graphics2D
 		
 	
