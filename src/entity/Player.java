@@ -74,6 +74,9 @@ public class Player extends Entity {
 		//Check Event
 		gp.eHandler.checkEvent();
 
+		//Check monster Entity
+		int monsterIndex = gp.cChaecker.checkEntity(this, gp.slimMonster);
+
 		// if collision is false player can move
         if(collisionOn==false){
 			switch(direction){

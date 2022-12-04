@@ -51,9 +51,9 @@ public class Entity {
 		if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
 			worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
 			worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
-			worldY - gp.tileSize > gp.player.worldY + gp.player.screenY ){
-			
-			
+			worldY - gp.tileSize < gp.player.worldY + gp.player.screenY ){
+
+
 
 			switch (direction) {
 				case "up":
@@ -89,7 +89,7 @@ public class Entity {
 				default:
 						break;
 				}
-				g2.drawImage(image,  screenX, screenY, gp.tileSize, gp.tileSize, null);
+				g2.drawImage(imageDraw,  screenX, screenY, gp.tileSize, gp.tileSize, null);
 		}
 	}
 
@@ -109,6 +109,8 @@ public class Entity {
 	public void update(){
 		collisionOn = false;
 		gp.cChaecker.checkTile(this);
+		gp.cChaecker.checkEntity(this, gp.slimMonster);
+
 		// if collision is false player can move
         if(collisionOn==false){
 			switch(direction){

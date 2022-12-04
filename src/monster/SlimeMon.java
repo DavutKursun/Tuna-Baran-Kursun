@@ -30,14 +30,14 @@ public class SlimeMon extends Entity{
 	
     public void getImage (){
 
-            up1=setup("/monster/slimeMonster/Layer1_slime1");
-			up2=setup("/monster/slimeMonster/Layer 1_slime2");
-			down1=setup("/monster/slimeMonster/Layer 1_slime3");
-			down2=setup("/monster/slimeMonster/Layer 1_slime4");   //bu metod playerin her yönü için 2 şer resim içeriyor 
-			left1=setup("/monster/slimeMonster/Layer 1_slime5");   //2 resmin olma sebebi ise bir yönde ilerlerken resimleri sıra
-			left2=setup("/monster/slimeMonster/Layer 1_slime6");   //değiştirerek animasyon yaratmak
-			right1=setup("/monster/slimeMonster/Layer 1_slime7");
-			right2=setup("/monster/slimeMonster/Layer 1_slime8");
+            up1=setup("/monster/slimeMonster/slime1");
+			up2=setup("/monster/slimeMonster/slime2");
+			down1=setup("/monster/slimeMonster/slime3");
+			down2=setup("/monster/slimeMonster/slime4");   //bu metod playerin her yönü için 2 şer resim içeriyor 
+			left1=setup("/monster/slimeMonster/slime5");   //2 resmin olma sebebi ise bir yönde ilerlerken resimleri sıra
+			left2=setup("/monster/slimeMonster/slime6");   //değiştirerek animasyon yaratmak
+			right1=setup("/monster/slimeMonster/slime7");
+			right2=setup("/monster/slimeMonster/slime8");
     }
     
     public void setAction() {
@@ -61,5 +61,12 @@ public class SlimeMon extends Entity{
 
 			actionLookCounter = 0;
 		}
+
+	}
+
+	@Override
+	public void update() {
+		super.update();
+		setAction();
 	}
 }

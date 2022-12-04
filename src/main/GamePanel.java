@@ -123,6 +123,12 @@ public class GamePanel extends JPanel implements Runnable{
 	public void paintComponent(Graphics g) {// Graphics is a class that has many functions to draw object on screen.
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;// we want to use some caracterictics in Graphics2D
+		for (int i = 0; i < slimMonster.length; i++) {
+			if(slimMonster[i] != null){
+				entityList.add(slimMonster[i]);
+			}
+		}
+		
 
 		if(gameState == titleState){
 			ui.draw(g2);
@@ -133,14 +139,12 @@ public class GamePanel extends JPanel implements Runnable{
 			tileM.draw(g2);
 			player.draw(g2);
 			ui.draw(g2);
-			for (int i = 0; i < slimMonster.length; i++) {
-				if(slimMonster[i] != null){
-					entityList.add(slimMonster[i]);
-				}
-			}
 
 			for (int i = 0; i < entityList.size(); i++) {
 				entityList.get(i).draw(g2);
+			}
+			for (int i = 0; i < entityList.size(); i++) {
+				entityList.remove(i);
 			}
 		}
 
