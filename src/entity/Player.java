@@ -76,6 +76,7 @@ public class Player extends Entity {
 
 		//Check monster Entity
 		int monsterIndex = gp.cChaecker.checkEntity(this, gp.slimMonster);
+		contactMonster(monsterIndex);
 
 		// if collision is false player can move
         if(collisionOn==false){
@@ -105,7 +106,23 @@ public class Player extends Entity {
 			}
 			spriteCounter=0;
 		}
+		}
+		if(invincible == true){
+			invincibleCounter++;
+			if(invincibleCounter > 60){
+				invincible = false;
+				invincibleCounter = 0;
+			}
+		}
 	}
+	private void contactMonster(int i) {
+		if(i != 999 ){
+			if(invincible == false ){
+				life -= 1 ;
+				invincible = true;
+			}
+
+		}
 	}
 	public void draw(Graphics2D g2) { // draw metodunun özelliği ise loopun içinde uptadeden gelen bilgileri ekrana dökmesi
       //  g2.setColor(Color.white); bunla anlatmk için

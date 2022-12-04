@@ -31,9 +31,13 @@ public class Entity {
 
 	public int maxLife;
 	public int life;
+	public boolean invincible = false;
+	public int invincibleCounter = 0;
 	
 	public int spriteCounter=0;
 	public int spriteNum=1;
+
+	public int type ; // 0 = player , 1 = monster
 
 	
 	public boolean collisionOn = false;
@@ -110,6 +114,14 @@ public class Entity {
 		collisionOn = false;
 		gp.cChaecker.checkTile(this);
 		gp.cChaecker.checkEntity(this, gp.slimMonster);
+		boolean contactPlayer = gp.cChaecker.checkPlayer(this);
+
+		if(this.type == 1 && contactPlayer){
+			if(gp.player.invincible == false){
+				gp.player.life -= 1;
+				gp.player.invincible = true;
+			}
+		}
 
 		// if collision is false player can move
         if(collisionOn==false){

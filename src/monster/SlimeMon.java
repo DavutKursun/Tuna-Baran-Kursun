@@ -14,6 +14,7 @@ public class SlimeMon extends Entity{
 
         name = "Slime Monster";
         speed = 1 ;
+		type = 1;
         maxLife = 4;
         life = maxLife;
 
