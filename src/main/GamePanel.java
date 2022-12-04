@@ -1,4 +1,5 @@
 package main;
+import entity.Entity;
 import entity.Player;
 import tile.TileManager;
 
@@ -6,6 +7,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -29,6 +31,8 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int worldWidth = tileSize*maxWorldCol;
 	public final int worldHeight = tileSize*maxWorldRow;
 
+	public AssetSetter aSetter = new AssetSetter(this);
+
 
 
 
@@ -42,6 +46,9 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public UI ui = new UI(this);
 	public EventHandler eHandler = new EventHandler(this);
+
+	public Entity slimMonster[] = new Entity[20];
+	ArrayList<Entity> entityList = new ArrayList<>();
 
 	public int gameState;
 	public final int titleState = 0;
@@ -58,7 +65,11 @@ public class GamePanel extends JPanel implements Runnable{
         this.setFocusable(true);// with this, this GamePanel can be Focused to receive key input.
 	}
 	public void setupGame() {
+
+		aSetter.setMonster();
 		gameState = titleState;
+
+
 	}
 
 	public void startGameThreat() {//a java library feature that allows us to simultaneously press keys and update the image at the same time
@@ -99,9 +110,16 @@ public class GamePanel extends JPanel implements Runnable{
 	public void update() {
 		if(gameState == playState){
 			player.upDate();
+
+			for (int i = 0; i < slimMonster.length; i++) {
+				if(slimMonster[i] != null){
+					slimMonster[i].update();
+				}
+			}
 		}
 	}
 
+	@Override
 	public void paintComponent(Graphics g) {// Graphics is a class that has many functions to draw object on screen.
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;// we want to use some caracterictics in Graphics2D
@@ -115,6 +133,15 @@ public class GamePanel extends JPanel implements Runnable{
 			tileM.draw(g2);
 			player.draw(g2);
 			ui.draw(g2);
+			for (int i = 0; i < slimMonster.length; i++) {
+				if(slimMonster[i] != null){
+					entityList.add(slimMonster[i]);
+				}
+			}
+
+			for (int i = 0; i < entityList.size(); i++) {
+				entityList.get(i).draw(g2);
+			}
 		}
 
 

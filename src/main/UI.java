@@ -54,7 +54,6 @@ public class UI {
 
         //draw blank heart
         while (i < gp.player.maxLife/2) {
-            System.out.println("birinci çizme");
             g2.drawImage(heartBlank, x, y,null);
             i++;
             x += gp.tileSize;
@@ -66,7 +65,6 @@ public class UI {
 
         //draw Current Life
         while (i < gp.player.life) {
-            System.out.println("ikinci while");
             g2.drawImage(heartHalf, x, y, null);
             i++;
             if(i < gp.player.life){

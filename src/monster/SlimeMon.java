@@ -25,18 +25,19 @@ public class SlimeMon extends Entity{
         solidAreaDefaultY = solidArea.y;
 
 		getImage();
+		
     }
-
+	
     public void getImage (){
 
-            up1=setup("/player/p_up1.png");
-			up2=setup("/player/p_up2.png");
-			down1=setup("/player/p_down1.png");
-			down2=setup("/player/p_down2.png");   //bu metod playerin her yönü için 2 şer resim içeriyor 
-			left1=setup("/player/p_left1.png");   //2 resmin olma sebebi ise bir yönde ilerlerken resimleri sıra
-			left2=setup("/player/p_left2.png");   //değiştirerek animasyon yaratmak
-			right1=setup("/player/p_right1.png");
-			right2=setup("/player/p_right2.png");
+            up1=setup("/monster/slimeMonster/Layer1_slime1");
+			up2=setup("/monster/slimeMonster/Layer 1_slime2");
+			down1=setup("/monster/slimeMonster/Layer 1_slime3");
+			down2=setup("/monster/slimeMonster/Layer 1_slime4");   //bu metod playerin her yönü için 2 şer resim içeriyor 
+			left1=setup("/monster/slimeMonster/Layer 1_slime5");   //2 resmin olma sebebi ise bir yönde ilerlerken resimleri sıra
+			left2=setup("/monster/slimeMonster/Layer 1_slime6");   //değiştirerek animasyon yaratmak
+			right1=setup("/monster/slimeMonster/Layer 1_slime7");
+			right2=setup("/monster/slimeMonster/Layer 1_slime8");
     }
     
     public void setAction() {

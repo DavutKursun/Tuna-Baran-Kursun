@@ -2,10 +2,8 @@ package object;
 
 import java.awt.image.BufferedImage;
 
-import main.GamePanel;
 
 import java.awt.Rectangle;
-import java.awt.Graphics2D;
 
 /**
  * SuperObject
