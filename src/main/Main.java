@@ -3,7 +3,7 @@ package main;
 import javax.swing.JFrame;
 // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 public class Main {
-//  4 
+//  4
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -21,13 +21,12 @@ public class Main {
 	    
 		window.setLocationRelativeTo(null);// No specify the location of the window(Bunun sayesinde pencere ekranın ortasında çıkacak)
 		window.setVisible(true);//its for see the window
-		
+
+		gamePanel.setupGame();
 		gamePanel.startGameThreat();
               
-		
-		
-		
-		
+
+
 	}
 
 }

@@ -1,6 +1,5 @@
 package entity;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -13,29 +12,31 @@ import main.KeyHandler;
 import java.awt.Rectangle;
 
 public class Player extends Entity {
-          
-	  GamePanel gp;
-	  KeyHandler keyH;
-	  
-	  public final int screenX;
-	  public final int screenY;
-	  //constructor
-	  public Player(GamePanel gp,KeyHandler keyH) {
-		  this.gp=gp;
-		  this.keyH=keyH;
-		  
-		  screenX=gp.screenWidth/2-gp.tileSize/2;
-		  screenY=gp.screenHeight/2-gp.tileSize/2;
-		  setDefoultValues();
-		  getPlayerImage();
 
-		  solidArea = new Rectangle(8,16,32,32);
-	  }
+
+	KeyHandler keyH;
+
+	public final int screenX;
+	public final int screenY;
+	//constructor
+	public Player(GamePanel gp, KeyHandler keyH) {
+		super(gp);
+		this.keyH=keyH;
+
+		screenX=gp.screenWidth/2-gp.tileSize/2;
+		screenY=gp.screenHeight/2-gp.tileSize/2;
+		setDefoultValues();
+		getPlayerImage();
+
+		solidArea = new Rectangle(8,16,32,32);
+	}
 	public void setDefoultValues() {
-		worldX=gp.tileSize*15;
-		worldY=gp.tileSize*15;
+		worldX=gp.tileSize*10;
+		worldY=gp.tileSize*9;
 		speed = 4;
 		direction = "up";
+		maxLife = 6;
+		life = maxLife;
 	}
 	public void getPlayerImage() {
 		try {
@@ -69,7 +70,11 @@ public class Player extends Entity {
 		//check tile collision
 		collisionOn = false;
 		gp.cChaecker.checkTile(this);
-// if collision is false player can move
+
+		//Check Event
+		gp.eHandler.checkEvent();
+
+		// if collision is false player can move
         if(collisionOn==false){
 			switch(direction){
 				case"up":
@@ -87,13 +92,13 @@ public class Player extends Entity {
 			}
 		}
 		spriteCounter++;
-		
+
 		if(spriteCounter>10) {
 			if(spriteNum==1) {
 				spriteNum=2;
 			}
 			else if(spriteNum==2) {
-			spriteNum=1;	
+			spriteNum=1;
 			}
 			spriteCounter=0;
 		}
@@ -106,15 +111,15 @@ public class Player extends Entity {
 		switch(direction) {
 		case"up":
 			if(spriteNum==1) {
-				image=up1;	
+				image=up1;
 			}
 			if(spriteNum==2) {
-				image=up2;	
+				image=up2;
 			}
 			break;
 		case"down":
 			if(spriteNum==1) {
-				image=down1;	
+				image=down1;
 			}
 			if(spriteNum==2) {
 				image=down2;
@@ -122,7 +127,7 @@ public class Player extends Entity {
 			break;
 		case"left":
 			if(spriteNum==1) {
-				image=left1;	
+				image=left1;
 			}
 			if(spriteNum==2) {
 				image=left2;
@@ -130,7 +135,7 @@ public class Player extends Entity {
 			break;
 		case "right":
 			if(spriteNum==1) {
-				image=right1;	
+				image=right1;
 			}
 			if(spriteNum==2) {
 				image=right2;

@@ -28,21 +28,24 @@ public void getTileImage() {
 	try {
 		tile[0]=new Tile();
         tile[0].image= ImageIO.read(getClass().getResourceAsStream("/tiles/çim.png"));
-       
+
 		tile[1]=new Tile();
 		tile[1].image= ImageIO.read(getClass().getResourceAsStream("/tiles/taş.png"));
-		
+		tile[1].collision = true;
 
 		tile[2]=new Tile();
 		tile[2].image= ImageIO.read(getClass().getResourceAsStream("/tiles/su.png"));
 	    tile[2].collision=true;
 
 		tile[3]= new Tile();
-		tile[3].image=  ImageIO.read(getClass().getResourceAsStream("/tiles/kum.png")); 
-		
+		tile[3].image=  ImageIO.read(getClass().getResourceAsStream("/tiles/kum.png"));
+
 		tile[4]= new Tile();
-		tile[4].image=  ImageIO.read(getClass().getResourceAsStream("/tiles/ağaç.png")); 
+		tile[4].image=  ImageIO.read(getClass().getResourceAsStream("/tiles/ağaç.png"));
 		tile[4].collision=true;
+
+		tile[5] = new Tile();
+		tile[5].image=  ImageIO.read(getClass().getResourceAsStream("/tiles/tasZemin.png"));
 
 	}catch(IOException e) {
 		e.printStackTrace();
@@ -99,7 +102,7 @@ int screenY = worldY - gp.player.worldY + gp.player.screenY;
 		worldCol++;
 		
 
-		if(worldCol == gp.maxScreenCol){
+		if(worldCol == gp.maxWorldCol){
 			worldCol=0;
 			
 			worldRow++;
