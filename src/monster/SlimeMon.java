@@ -26,9 +26,8 @@ public class SlimeMon extends Entity{
         solidAreaDefaultY = solidArea.y;
 
 		getImage();
-		
     }
-	
+
     public void getImage (){
 
             up1=setup("/monster/slimeMonster/slime1");
