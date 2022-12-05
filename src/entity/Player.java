@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import java.awt.AlphaComposite;
 
 import java.awt.Rectangle;
 
@@ -162,6 +163,12 @@ public class Player extends Entity {
 			}
 			 break;
 			 	}
+
+		if(invincible == true){
+			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+		}
 		g2.drawImage(image,screenX,screenY,gp.tileSize,gp.tileSize,null);//spnuncusu image observer ne işe yarıyor sor
+		
+		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 	}
 }
